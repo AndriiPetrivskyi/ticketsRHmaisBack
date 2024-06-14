@@ -5,7 +5,7 @@ const authenticateToken = require("../middleware/authMiddleware");
 
 // Fetch all users
 router.get("/", authenticateToken, (req, res) => {
-  const sql = "SELECT * FROM sys.users;";
+  const sql = "SELECT * FROM sys.tickets;";
 
   db.query(sql, (err, results) => {
     if (err) {

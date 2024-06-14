@@ -7,7 +7,7 @@ const db = require("../database/db"); // Assuming you have a db.js for MySQL con
 
 // Secret key for JWT
 const util = require("util");
-const JWT_SECRET = "your_jwt_secret"; // Replace with your actual JWT secret
+const JWT_SECRET = "3d2p9S!fG#u8hR2%zX9k@j7LbT3mW"; // Replace with your actual JWT secret
 
 // Promisify the db.query method
 const query = util.promisify(db.query).bind(db);
