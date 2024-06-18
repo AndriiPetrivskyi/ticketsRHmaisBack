@@ -15,9 +15,9 @@ const query = util.promisify(db.query).bind(db);
 router.post("/login", async (req, res) => {
   try {
     console.log(req.body);
-    const { username, password } = req.body;
+    const { id, password } = req.body;
 
-    const sql = `SELECT * FROM sys.users WHERE username = '${username}'`;
+    const sql = `SELECT * FROM sys.users WHERE id = '${id}'`;
 
     // Await the result of the query
     const results = await query(sql);
@@ -48,7 +48,7 @@ router.post("/login", async (req, res) => {
       },
       JWT_SECRET,
       {
-        expiresIn: "24h",
+        expiresIn: "12h",
       }
     );
 
