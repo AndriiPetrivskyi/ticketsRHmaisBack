@@ -39,12 +39,14 @@ router.post("/login", async (req, res) => {
     }
 
     // User authenticated, generate JWT
+    if(user.status != "Disabled") {
     const token = jwt.sign(
       {
         id: user.id,
         type: user.type,
         username: user.username,
         email: user.email,
+        status: user.status,
       },
       JWT_SECRET,
       {
@@ -53,6 +55,9 @@ router.post("/login", async (req, res) => {
     );
 
     res.json({ token });
+  } else {
+    res.status(500).json({ message: "User status: disable" });
+  }
   } catch (err) {
     console.error(err);
     res.status(500).json({ message: "Server error" });
